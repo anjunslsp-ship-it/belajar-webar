@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>AR Alternatif Tanpa ARCore</title>
-    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.2/aframe/build/aframe-ar.js"></script>
+    <title>AR Sofia the First</title>
+    <!-- Menggunakan versi A-Frame yang lebih stabil untuk AR.js -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
 <body style="margin : 0px; overflow: hidden;">
 
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;">
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
         
+        <!-- Asset Management: Tempat meload model 3D agar lebih ringan -->
+        <a-assets>
+            <!-- Ganti 'sofia.glb' dengan URL atau path file model 3D Sofia milik Anda -->
+            <a-asset-item id="sofia-model" src="sofia.glb"></a-asset-item>
+        </a-assets>
+
+        <!-- Menggunakan Marker Hiro -->
         <a-marker preset="hiro">
             
-            <a-box position="0 0.5 0" 
-                   material="color: #ff0000; opacity: 0.8;" 
-                   animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
-            </a-box>
+            <!-- Menampilkan Model Sofia the First -->
+            <!-- scale, position, dan rotation bisa disesuaikan dengan ukuran asli model Anda -->
+            <a-entity gltf-model="#sofia-model"
+                      position="0 0 0" 
+                      scale="0.5 0.5 0.5"
+                      rotation="0 0 0"
+                      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000">
+            </a-entity>
             
         </a-marker>
 
